@@ -13,11 +13,17 @@ use App\Http\Controllers\ClientsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// put for modify one feture
+// patch for modfify many fetures
 
-Route::get('/', function () {return view('welcome');});
+    Route::group(['prefix'=>'/clients', 'as'=>'clients.'],function(){
+    Route::get('/',[ClientsController::class,'index'])->name('index');
+    Route::get('/create',[ClientsController::class,'create'])->name('create');
+    Route::post('/store',[ClientsController::class,'store'])->name('store');
+    Route::delete('/delete',[ClientsController::class,'delete'])->name('delete');
+    Route::get('/edit/{id}',[ClientsController::class ,'edit'])->name('edit');
+    Route::put('/update',[ClientsController::class ,'update'])->name('update');
+});
 
-Route::get('/clients',[ClientsController::class,'index'])->name('Client.index');
-Route::get('/clients/create',[ClientsController::class,'create'])->name('Client.create');
-Route::post('/clients/store',[ClientsController::class,'store'])->name('Client.store');
 
 
