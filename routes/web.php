@@ -18,6 +18,7 @@ use App\Http\Controllers\ClientsController;
 
     Route::group(['prefix'=>'/clients', 'as'=>'clients.'],function(){
     Route::get('/',[ClientsController::class,'index'])->name('index');
+    Route::get('/add',[ClientsController::class,'add'])->name('add');
     Route::get('/create',[ClientsController::class,'create'])->name('create');
     Route::post('/store',[ClientsController::class,'store'])->name('store');
     Route::delete('/delete',[ClientsController::class,'delete'])->name('delete');
