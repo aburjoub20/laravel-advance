@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Providers;
-use App\Http\Interfaces\ClientsInterface;
-use App\Http\Repositories\ClientsRepositories;
+// use App\Http\Interfaces\ClientsInterface;
+// use App\Http\Repositories\ClientsRepository;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -25,7 +25,13 @@ class RepositoryServiceProvicer extends ServiceProvider
      */
     public function boot() :void
     {
-        $this->app->bind(ClientsInterface::class, ClientsRepositories::class);
+        // $this->app->bind( ClientsRepository::class ,ClientsInterface::class);
+
+
+
+        $this->app->bind('App\Http\Interfaces\ClientsInterface','App\Http\Repositories\ClientsRepository');
+
+
 
     }
 }

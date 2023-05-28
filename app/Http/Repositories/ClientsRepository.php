@@ -1,9 +1,10 @@
 <?php
 namespace App\Http\Repositories;
 use App\Models\Client;
+use Illuminate\Support\Facades\Session;
 use App\Http\Interfaces\ClientsInterface;
 
-class ClientsRepositors implements ClientsInterface{
+class ClientsRepository implements ClientsInterface{
 
     public $clientModel;
     public function __construct(Client $client){
@@ -11,7 +12,7 @@ class ClientsRepositors implements ClientsInterface{
     }
 
     public function index(){
-        $clinets = $this->$clientModel::get();
+        $clinets = $this->clientModel::get();
         return view('clients.index',compact('clinets'));
     }
     public function create(){
@@ -50,8 +51,9 @@ class ClientsRepositors implements ClientsInterface{
         }
 
         public function clientredirect($msg){
-            $request->session()->flash('msg', $msg);
-            return redirect(route('clients.index'));
+            Session::flush('msg', $msg);
+            // return redirect(route('clients.index'));
+            return  view('clients.index');
         }
         }
 

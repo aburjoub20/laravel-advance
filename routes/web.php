@@ -16,6 +16,13 @@ use App\Http\Controllers\ClientsController;
 // put for modify one feture
 // patch for modfify many fetures
 
+// Route::get('/', function () {
+//     return route('/clients');
+// });
+
+// Route::get('/',[ClientsController::class,'index'])->name('index');
+
+
     Route::group(['prefix'=>'/clients', 'as'=>'clients.'],function(){
     Route::get('/',[ClientsController::class,'index'])->name('index');
     Route::get('/add',[ClientsController::class,'add'])->name('add');
